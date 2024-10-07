@@ -1,10 +1,48 @@
+<?php
+require_once('Model/model.php'); 
+include_once('./Controlador/controlador.php');
+
+if (isset($_SESSION['correu'])) {
+    $_SESSION['usuari_autenticat'] = true;
+    $articulos = obtenirArticlesUsuari();
+} else {
+    $_SESSION['usuari_autenticat'] = false;
+    $articulos = obtenirArticles();
+}
+
+include_once('./Vista/header.php');
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php include('./Vista/header.php'); ?>
+    <title>Artículos</title>
 </head>
 <body>
     <h1>Descobreix i comparteix els teus llibres preferits</h1>
-    <h2><?php if (isset($_SESSION['nom'])) echo 'Benvingut ' . $_SESSION['nom'] . '!!'; ?></h2>
+
+    <?php if (isset($_SESSION['nom'])): ?> 
+        <h2><?php echo 'Benvingut ' . $_SESSION['nom'] . ' aquests son els teus llibres!!'; ?></h2>
+    <?php else: ?>
+        <h2>Aquests son tots els llibres</h2> 
+    <?php endif; ?>
+    <div class="container">
+        <table class="tablaUsuarios">
+            <thead>
+                <tr>
+                    <th>Titol</th>
+                    <th>Contingut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($articulos as $art): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($art['titol']); ?></td>
+                        <td><?php echo htmlspecialchars($art['cos']); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

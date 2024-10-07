@@ -1,10 +1,11 @@
 <?php
-// Arxiu on esta la connexió a la base de dades
-include '../Model/model.php';
+session_start();
+
+include(__DIR__ . '/../Model/model.php');
 
 $missatge_error = "";
 
-// Funció per verificar si el correu ja existeix
+// Funció per verificar si el correu ja existeix a la BD
 function correuExisteix($correu) {
     global $connexio;
     
@@ -49,7 +50,6 @@ function afegirUsuari($nom, $correu, $contrasenya, $confirmacio_contrasenya) {
 // Funció per iniciar sessió
 function iniciarSessio($correu, $contrasenya) {
     global $connexio, $missatge_error;
-    
     if (!correuExisteix($correu)) {
         $missatge_error = "El correu no existeix.";
         return false;
@@ -76,12 +76,26 @@ function iniciarSessio($correu, $contrasenya) {
     }
 }
 
-// Funció per obtenir el nom de l'usuari des de la sessió
-function obtenirNomUsuari() {
-    if (isset($_SESSION['nom'])) {
-        return $_SESSION['nom'];
-    } else {
-        return "";
-    }
+// Funció per fer un select de tots els articles al menu per a qualsevol usuari
+function obtenirArticles() {
+    global $connexio;
+    $stmt = $connexio->prepare("SELECT * FROM taula_articles");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Funció per fer un select del articles que hac reat l'usuari pel seu correu
+function obtenirArticlesUsuari() {
+    global $connexio;
+
+    // Obtener el correo de la sesión
+    $correuUsuari = $_SESSION['correu'];
+
+    // Obtener los artículos del usuario usando su correo
+    $stmt = $connexio->prepare("SELECT * FROM taula_articles WHERE correu_usuari = :correuUsuari");
+    $stmt->bindParam(':correuUsuari', $correuUsuari);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
