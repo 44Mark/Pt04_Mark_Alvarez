@@ -1,0 +1,220 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Estils de la barra de navegació */ 
+.navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #aa3a22;
+    padding: 7px;
+}
+
+.navbar a {
+    color: #f2f2f2;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #cc4b33;
+}
+
+/* Valors per la barra de navegació superior */
+.navbar.superior {
+    border-bottom: 1px solid #aa3a22;
+    display: flex;
+    justify-content: center; 
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    color: #f2f2f2;
+}
+
+/* Valors per la barra de navegació inferior */
+.navbar.inferior {
+    border-top: 1px solid #aa3a22;
+    margin-top: -1px;
+    padding: 5px 10px;
+}
+
+/* Eslogan de la pàgina */
+h1{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #d64c2d;
+    padding: 14px 16px;
+}
+
+h2{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #cc4b33;
+
+}
+
+/* Estils del menú desplegable */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown img:hover {
+    background-color: #cc4b33;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #aa3a22;
+    min-width: 160px;
+    z-index: 1;
+    border: 2px solid black;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #cc4b33;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilos para el formulario de inicio de sesión */
+#iniciar-sesion {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    margin: 50px auto; /* Centra el formulario horizontalmente */
+}
+
+#iniciar-sesion h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.contenedor-input {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.contenedor-input label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.contenedor-input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.contenedor-input input:focus {
+    border-color: #66afe9;
+    outline: none;
+}
+
+.forgot {
+    margin: 15px 0;
+    text-align: right;
+}
+
+.forgot a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot a:hover {
+    text-decoration: underline;
+}
+
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para la tabla de gestión de artículos */
+.container {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.tablaUsuarios {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.tablaUsuarios th, .tablaUsuarios td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.tablaUsuarios th {
+    background-color: #f2f2f2;
+    color: #333;
+    text-align: center;
+}
+
+.tablaUsuarios tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tablaUsuarios tr:hover {
+    background-color: #f1f1f1;
+}
+
+.botonindex {
+    background-color: #cc5a4a;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    width: 30%;
+}
+
+.botonindex:hover {
+    background-color: #882a1a;
+}
+
+.missatge {
+    border: 2px solid #ccc;
+    padding: 5px;
+    margin: 10px auto;
+    width: 50%;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}

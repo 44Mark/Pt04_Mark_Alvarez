@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Reescribe /gestio a index.php
+RewriteRule ^inici$ /BackEnd/Pt04_Mark_Alvarez/index.php [L]
+
+# Reescribe /login a /Vista/login.php
+RewriteRule ^login$ /BackEnd/Pt04_Mark_Alvarez/Vista/login.php [L]
+
+# Reescribe /signup a /Vista/signup.php
+RewriteRule ^signup$ /BackEnd/Pt04_Mark_Alvarez/Vista/signup.php [L]
+
+# Reescribe /gestio a /Vista/signup.php
+RewriteRule ^gestio$ /BackEnd/Pt04_Mark_Alvarez/Vista/gestio.php [L]
+
+# Reescribe /logout a /Vista/signup.php
+RewriteRule ^logout$ /BackEnd/Pt04_Mark_Alvarez/Vista/logout.php [L]
