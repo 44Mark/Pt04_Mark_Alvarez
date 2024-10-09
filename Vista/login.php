@@ -21,19 +21,16 @@
                 </label>
                 <input type="password" name="contrasenya" required>
             </div>
+            <input type=checkbox name="recordar" value="recordar">Recordar-me<br>
             <input type="submit" class="button button-block" value="Iniciar Sessió">
+            
         </form>
         <?php
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                include '../Controlador/controlador.php';
-                if (iniciarSessio($_POST['correo'], $_POST['contrasenya'])) {
-                    header("Location: /BackEnd/Pt04_Mark_Alvarez/inici");
-                    exit();
-                } else {
-                    global $missatge_error;
-                    echo "<p class='missatge'>$missatge_error</p>";
+                include '../Controlador/verificarUsuari.php';
+                $missatge = login($_POST['correo'], $_POST['contrasenya']);
+                echo "<p class='missatge'>$missatge</p>";
                 }
-            }
         ?>
     </div>
     

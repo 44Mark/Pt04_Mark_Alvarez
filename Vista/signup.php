@@ -39,13 +39,11 @@
         </form>
         <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        include '../Controlador/controlador.php';
-        $missatge = afegirUsuari($_POST['nombre'], $_POST['correo'], $_POST['contrasenya'], $_POST['confirmacio_contrasenya']);
+        include '../Controlador/verificarUsuari.php';
+        $missatge = signup($_POST['nombre'], $_POST['correo'], $_POST['contrasenya'], $_POST['confirmacio_contrasenya']);
         echo "<p class='missatge'>$missatge</p>";
     }
     ?>
     </div>
-    
-    
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
-require_once('Model/model.php'); 
-include_once('./Controlador/controlador.php');
+require_once('Model/connexio.php'); 
+include('Model/llibres.php');
+include('Model/usuari.php');
 
 if (isset($_SESSION['correu'])) {
     $_SESSION['usuari_autenticat'] = true;
