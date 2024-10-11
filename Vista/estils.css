@@ -202,7 +202,7 @@ h2{
     text-decoration: none;
     border-radius: 4px;
     display: inline-block;
-    width: 30%;
+    width: 40%;
 }
 
 .botonindex:hover {
@@ -219,3 +219,12 @@ h2{
     border-radius: 10px;
 }
 
+.botonme {
+    background-color: #cc5a4a;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    width: 40%;
+}

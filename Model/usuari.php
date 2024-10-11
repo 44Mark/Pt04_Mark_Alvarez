@@ -21,7 +21,6 @@ function correuExisteix($correu) {
 // Funció per afegir un nou usuari a la base de dades
 function afegirUsuari($nom, $correu, $contrasenya, $confirmacio_contrasenya) {
         global $connexio;
-        
         // Hashear la contrasenya
         $contrasenya_hashed = password_hash($contrasenya, PASSWORD_DEFAULT);
     
@@ -32,6 +31,7 @@ function afegirUsuari($nom, $correu, $contrasenya, $confirmacio_contrasenya) {
         $stmt->bindParam(':correu', $correu);
         $stmt->bindParam(':contrasenya', $contrasenya_hashed);
        
+        $stmt->execute();
     }
 
 // Funció per iniciar sessió
@@ -47,9 +47,13 @@ function iniciarSessio($correu, $contrasenya) {
     
     if (password_verify($contrasenya, $usuari['contrasenya'])) {
         // Iniciar la sessió del usuari
+        session_start();
         $_SESSION['correu'] = $correu;
         $_SESSION['nom'] = $usuari['nom'];
-        return true;
+        
+        // Redirigir a index.php
+        header("Location: ../index.php");
+        exit();
     } else {
         $missatge_error = "Contrasenya incorrecta.";
         return false;

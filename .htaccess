@@ -14,3 +14,6 @@ RewriteRule ^gestio$ /BackEnd/Pt04_Mark_Alvarez/Vista/gestio.php [L]
 
 # Reescribe /logout a /Vista/signup.php
 RewriteRule ^logout$ /BackEnd/Pt04_Mark_Alvarez/Vista/logout.php [L]
+
+# Reescribe /logout a /Vista/signup.php
+RewriteRule ^insert$ /BackEnd/Pt04_Mark_Alvarez/Vista/insert.php [L]

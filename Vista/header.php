@@ -12,8 +12,10 @@
     <div>
         <?php if (isset($_SESSION['usuari_autenticat']) && $_SESSION['usuari_autenticat'] == true): ?> 
             <a href="/BackEnd/Pt04_Mark_Alvarez/inici">Inici</a>
-            <a href="/BackEnd/Pt04_Mark_Alvarez/gestio">Gestió de Llibres</a>
+            <a href="/BackEnd/Pt04_Mark_Alvarez/insert">Insertar nou llibre</a>
+
         <?php else: ?>
+
             <a href="/BackEnd/Pt04_Mark_Alvarez/inici">Inici</a>  
         <?php endif; ?>
     </div>
@@ -24,9 +26,11 @@
         <?php if (isset($_SESSION['usuari_autenticat']) && $_SESSION['usuari_autenticat'] == true): ?> 
                 <a href="">Modificar compte</a>
                 <a href="/BackEnd/Pt04_Mark_Alvarez/logout">Sortir</a>
+
             <?php else: ?>
                 <a href="/BackEnd/Pt04_Mark_Alvarez/login">Login</a>
                 <a href="/BackEnd/Pt04_Mark_Alvarez/signup">Sign up</a>
+
             <?php endif; ?>
         </div>
     </div>

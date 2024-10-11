@@ -33,6 +33,10 @@ include_once('./Vista/header.php');
                 <tr>
                     <th>Titol</th>
                     <th>Contingut</th>
+                    <?php if ($_SESSION['usuari_autenticat']): ?>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -40,6 +44,10 @@ include_once('./Vista/header.php');
                     <tr>
                         <td><?php echo htmlspecialchars($art['titol']); ?></td>
                         <td><?php echo htmlspecialchars($art['cos']); ?></td>
+                        <?php if ($_SESSION['usuari_autenticat']): ?>
+                            <td><a href="" class="botonindex">Modificar</a></td>
+                            <td><a href="" class="botonindex">Eliminar</a></td>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

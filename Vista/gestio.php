@@ -3,7 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include('./header.php'); ?>
+<?php
+session_start(); 
+
+include('./header.php'); 
+?>
 </head>
 <body>
 
