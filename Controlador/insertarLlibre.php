@@ -1,6 +1,7 @@
 <?php
 require('../Model/llibres.php');
 
+// Comprovem que els camps no estiguin buits i cridem a la funció insertLlibre
 function comprovacioInsertarLlibre($titol, $cos, $correu) {
     if (empty($titol)) {
         $_SESSION['message'] = 'El titol no pot estar buit';

@@ -32,11 +32,12 @@ include('./header.php');
     </div>
 
     <?php
+        // Si s'ha enviat el formulari, cridem a la funció comprovacioInsertarLlibre
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             include('../Controlador/insertarLlibre.php');
             $missatge = comprovacioInsertarLlibre($_POST['titol'], $_POST['cos'], $_SESSION['correu']);
         }
-
+        // Si hi ha un missatge, el mostrem
         if (isset($_SESSION['message'])) {
             $missatge = $_SESSION['message'];
             echo "<p class='missatge'>$missatge</p>";

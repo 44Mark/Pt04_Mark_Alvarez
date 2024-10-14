@@ -31,11 +31,12 @@
         </form>
         
         <?php
+        // Si s'ha enviat el formulari, cridem a la funció signup
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 include '../Controlador/verificarUsuari.php';
                 signup($_POST['nombre'], $_POST['correo'], $_POST['contrasenya'], $_POST['confirmacio_contrasenya']);
             }
-            
+        // Si hi ha un missatge, el mostrem
             if (isset($_SESSION['message'])) {
                 $missatge = $_SESSION['message'];
                 echo "<p class='missatge'>$missatge</p>";

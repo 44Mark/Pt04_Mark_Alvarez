@@ -15,6 +15,7 @@ function correuExisteix($correu) {
     return $stmt->fetchColumn() > 0;
 }
 
+// Funció per obtenir el correu de l'usuari
 function obtenirUsuari($correu) {
     global $connexio;
     
@@ -40,7 +41,7 @@ function afegirUsuari($nom, $correu, $contrasenya_hashed) {
     $stmt->execute();
 }
 
-// Funció per iniciar sessió
+// Funció per iniciar sessió i comprovar que existeix l'usuari a la base de dades
 function iniciarSessio($correu, $contrasenya) {
     global $connexio;
     
