@@ -1,7 +1,6 @@
 <?php
 session_start();
-
-include('../Model/llibres.php');
+require('../Model/llibres.php');
 
 if (empty($_GET['id'])) {
     $_SESSION['message'] = 'No hi ha cap llibre per eliminar';

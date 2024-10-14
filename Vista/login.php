@@ -5,12 +5,12 @@
 </head>
 <body>
 
-    <div id="iniciar-sesion">
+    <div id="iniciar-sessio">
         <h1>Inici Sessió</h1>
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
             <div class="contenedor-input">
                 <label>Correu electrònic</label>
-                <input type="email" name="correo" required>
+                <input type="email" name="correu" required>
             </div>
 
             <div class="contenedor-input">
@@ -18,15 +18,19 @@
                 <input type="password" name="contrasenya" required>
             </div>
             
-            <input type=checkbox name="recordar" value="recordar">Recordar-me<br>
+            <input type="checkbox" name="recordar" value="recordar">Recordar-me<br>
             <input type="submit" class="button button-block" value="Iniciar Sessió">
-            
         </form>
         <?php
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 include '../Controlador/verificarUsuari.php';
-                $missatge = login($_POST['correo'], $_POST['contrasenya']);
+                login($_POST['correu'], $_POST['contrasenya']);
+            }
+
+            if (isset($_SESSION['message'])) {
+                $missatge = $_SESSION['message'];
                 echo "<p class='missatge'>$missatge</p>";
+                unset($_SESSION['message']);
             }
         ?>
     </div>

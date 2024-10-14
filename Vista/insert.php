@@ -34,7 +34,7 @@ include('./header.php');
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             include('../Controlador/insertarLlibre.php');
-            $missatge = comprovacioInsertarLlibre($_POST['titol'], $_POST['cos']);
+            $missatge = comprovacioInsertarLlibre($_POST['titol'], $_POST['cos'], $_SESSION['correu']);
         }
 
         if (isset($_SESSION['message'])) {

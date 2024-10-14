@@ -33,8 +33,13 @@
         <?php
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 include '../Controlador/verificarUsuari.php';
-                $missatge = signup($_POST['nombre'], $_POST['correo'], $_POST['contrasenya'], $_POST['confirmacio_contrasenya']);
+                signup($_POST['nombre'], $_POST['correo'], $_POST['contrasenya'], $_POST['confirmacio_contrasenya']);
+            }
+            
+            if (isset($_SESSION['message'])) {
+                $missatge = $_SESSION['message'];
                 echo "<p class='missatge'>$missatge</p>";
+                unset($_SESSION['message']);
             }
         ?>
     </div>

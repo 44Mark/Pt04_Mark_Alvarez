@@ -10,11 +10,8 @@ function obtenirArticles() {
 }
 
 // Funció per fer un select del articles que ha creat l'usuari pel seu correu
-function obtenirArticlesUsuari() {
+function obtenirArticlesUsuari($correuUsuari) {
     global $connexio;
-
-    // Obtener el correo de la sesión
-    $correuUsuari = $_SESSION['correu'];
 
     // Obtener los artículos del usuario usando su correo
     $stmt = $connexio->prepare("SELECT * FROM taula_articles WHERE correu_usuari = :correuUsuari");
@@ -25,11 +22,8 @@ function obtenirArticlesUsuari() {
 }
 
 // Funció per fer un insert de llibres per l'id de l'usuari
-function insertLlibre($titol, $cos) {
+function insertLlibre($titol, $cos, $correuUsuari) {
     global $connexio;
-
-    // Obtener el correo de la sesión
-    $correuUsuari = $_SESSION['correu'];
 
     // Insertar el artículo en la base de datos
     $stmt = $connexio->prepare("INSERT INTO taula_articles (titol, cos, correu_usuari) VALUES (:titol, :cos, :correuUsuari)");

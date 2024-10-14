@@ -5,7 +5,7 @@ include('Model/usuari.php');
 
 if (isset($_SESSION['correu'])) {
     $_SESSION['usuari_autenticat'] = true;
-    $articulos = obtenirArticlesUsuari();
+    $articulos = obtenirArticlesUsuari($_SESSION['correu']);
 } else {
     $_SESSION['usuari_autenticat'] = false;
     $articulos = obtenirArticles();

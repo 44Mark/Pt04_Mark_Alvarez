@@ -1,14 +1,13 @@
 <?php
-// Verifiaccions dels camps per poder anar a fer l'insert
-include('../Model/llibres.php');
+require('../Model/llibres.php');
 
-function comprovacioInsertarLlibre($titol, $cos) {
+function comprovacioInsertarLlibre($titol, $cos, $correu) {
     if (empty($titol)) {
         $_SESSION['message'] = 'El titol no pot estar buit';
     } else if (empty($cos)) {
         $_SESSION['message'] = 'El cos no pot estar buit';
     } else {
-        insertLlibre($titol, $cos);
+        insertLlibre($titol, $cos,$correu);
         $_SESSION['message'] = 'Llibre insertat correctament';
     }
 }
