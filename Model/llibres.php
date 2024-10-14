@@ -38,4 +38,14 @@ function insertLlibre($titol, $cos) {
     $stmt->bindParam(':correuUsuari', $correuUsuari);
     $stmt->execute();
 }
+
+// Funció per eliminar el llibre 
+function eliminarLlibre($id) {
+    global $connexio;
+
+    // Eliminar el llibre de la base de dades
+    $stmt = $connexio->prepare("DELETE FROM taula_articles WHERE id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+}
 ?>

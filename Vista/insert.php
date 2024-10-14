@@ -7,32 +7,41 @@ session_start();
 
 include('./header.php'); 
 ?>
-<link rel="stylesheet" href="Vista/estils.css"> <!-- Asegúrate de que la ruta al archivo CSS sea correcta -->
+
 </head>
 <body>
-    <div class="insert">
-        <h1>Creació d'articles</h1>
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">  
+    <h1>Creació d'articles</h1>
+    <div class="container">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="insert">  
             <input type="hidden" name="accion" value="insertarLlibre">
 
-            <label for="titol">Titol:</label>
-            <input type="text" id="titol" name="titol" value="<?php if (isset($titol)) echo $titol; ?>">
+            <div class="contenedor-input">
+                <label for="titol">Titol:</label>
+                <input type="text" id="titol" name="titol" value="<?php if (isset($titol)) echo $titol; ?>">
+            </div>
 
-            <label for="cos">Cos:</label>
-            <textarea name="cos" rows="8" cols="20"><?php if (isset($cos)) echo $cos; ?></textarea>
+            <div class="contenedor-input">
+                <label for="cos">Cos:</label>
+                <textarea name="cos" rows="8" cols="92.5"><?php if (isset($cos)) echo $cos; ?></textarea>
+            </div>
 
-            <input type="submit" value="Enviar" class="boton">
+            <input type="submit" value="Enviar" class="button">
         </form>
         
-        <button class="boton" onclick="window.location.href='./index.php';">Tornar al menu</button>
+        <button class="button" onclick="window.location.href='./index.php';">Tornar al menu</button>
     </div>
 
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             include('../Controlador/insertarLlibre.php');
             $missatge = comprovacioInsertarLlibre($_POST['titol'], $_POST['cos']);
+        }
+
+        if (isset($_SESSION['message'])) {
+            $missatge = $_SESSION['message'];
             echo "<p class='missatge'>$missatge</p>";
-    }
+            unset($_SESSION['message']);
+        }
     ?>
 </body>
 </html>

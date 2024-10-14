@@ -46,12 +46,19 @@ include_once('./Vista/header.php');
                         <td><?php echo htmlspecialchars($art['cos']); ?></td>
                         <?php if ($_SESSION['usuari_autenticat']): ?>
                             <td><a href="" class="botonindex">Modificar</a></td>
-                            <td><a href="" class="botonindex">Eliminar</a></td>
+                            <td><a href="controlador/eliminarllibre.php?id=<?php echo $art['id']; ?>" class="botonindex" onclick="return confirm('Estàs segur que vols eliminar aquest llibre?');">Eliminar</a></td>
+                        
                         <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
+
             </tbody>
         </table>
+        <?php if (isset($_SESSION['message'])) {
+                    $missatge = $_SESSION['message'];
+                    echo "<p class='missatge'>$missatge</p>";
+                    unset($_SESSION['message']);
+                } ?>
     </div>
 </body>
 </html>
