@@ -16,6 +16,11 @@ include('./header.php');
             <input type="hidden" name="accion" value="insertarLlibre">
 
             <div class="contenedor-input">
+                <label for="isbn">ISBN:</label>
+                <input type="text" id="isbn" name="isbn" value="<?php if (isset($isbn)) echo $isbn; ?>">
+            </div>
+
+            <div class="contenedor-input">
                 <label for="titol">Titol:</label>
                 <input type="text" id="titol" name="titol" value="<?php if (isset($titol)) echo $titol; ?>">
             </div>
@@ -29,13 +34,11 @@ include('./header.php');
         </form>
         
         <button class="button" onclick="window.location.href='./index.php';">Tornar al menu</button>
-    </div>
-
-    <?php
+        <?php
         // Si s'ha enviat el formulari, cridem a la funció comprovacioInsertarLlibre
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             include('../Controlador/insertarLlibre.php');
-            $missatge = comprovacioInsertarLlibre($_POST['titol'], $_POST['cos'], $_SESSION['correu']);
+            $missatge = comprovacioInsertarLlibre($_POST['isbn'], $_POST['titol'], $_POST['cos'], $_SESSION['correu']);
         }
         // Si hi ha un missatge, el mostrem
         if (isset($_SESSION['message'])) {
@@ -44,5 +47,8 @@ include('./header.php');
             unset($_SESSION['message']);
         }
     ?>
+    </div>
+
+    
 </body>
 </html>

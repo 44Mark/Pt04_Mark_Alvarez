@@ -22,11 +22,12 @@ function obtenirArticlesUsuari($correuUsuari) {
 }
 
 // Funció per fer un insert de llibres per l'id de l'usuari
-function insertLlibre($titol, $cos, $correuUsuari) {
+function insertLlibre($isbn, $titol, $cos, $correuUsuari) {
     global $connexio;
 
     // Insertar el artículo en la base de datos
-    $stmt = $connexio->prepare("INSERT INTO taula_articles (titol, cos, correu_usuari) VALUES (:titol, :cos, :correuUsuari)");
+    $stmt = $connexio->prepare("INSERT INTO taula_articles (isbn, titol, cos, correu_usuari) VALUES (:isbn, :titol, :cos, :correuUsuari)");
+    $stmt->bindParam(':isbn', $isbn);
     $stmt->bindParam(':titol', $titol);
     $stmt->bindParam(':cos', $cos);
     $stmt->bindParam(':correuUsuari', $correuUsuari);
@@ -34,12 +35,12 @@ function insertLlibre($titol, $cos, $correuUsuari) {
 }
 
 // Funció per eliminar el llibre 
-function eliminarLlibre($id) {
+function eliminarLlibre($isbn) {
     global $connexio;
 
     // Eliminar el llibre de la base de dades
-    $stmt = $connexio->prepare("DELETE FROM taula_articles WHERE id = :id");
-    $stmt->bindParam(':id', $id);
+    $stmt = $connexio->prepare("DELETE FROM taula_articles WHERE isbn = :isbn");
+    $stmt->bindParam(':isbn', $isbn);
     $stmt->execute();
 }
 ?>

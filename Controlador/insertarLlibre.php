@@ -2,14 +2,30 @@
 require('../Model/llibres.php');
 
 // Comprovem que els camps no estiguin buits i cridem a la funció insertLlibre
-function comprovacioInsertarLlibre($titol, $cos, $correu) {
-    if (empty($titol)) {
-        $_SESSION['message'] = 'El titol no pot estar buit';
-    } else if (empty($cos)) {
-        $_SESSION['message'] = 'El cos no pot estar buit';
+function comprovacioInsertarLlibre($isbn, $titol, $cos, $correu) {
+    // Comprovem si el camp isbn esta buit
+    if (empty($isbn)) {
+        $_SESSION['message'] = 'El isbn no pot estar buit';
+    // Eliminem guions del isbn
     } else {
-        insertLlibre($titol, $cos,$correu);
-        $_SESSION['message'] = 'Llibre insertat correctament';
+        $isbn = str_replace('-', '', $isbn);
+    // Comprovem si el camp isbn te 13 digits
+        if (!preg_match('/^\d{13}$/', $isbn)) {
+            $_SESSION['message'] = 'El isbn ha de tenir 13 dígits';
+        // Comprovem si el camp isbn comença amb 978 o 979
+        } else if (!preg_match('/^(978|979)/', $isbn)) {
+            $_SESSION['message'] = 'El isbn ha de començar amb 978 o 979';
+        // Comprovem si el camp titol esta buit
+        } else if (empty($titol)) {
+            $_SESSION['message'] = 'El titol no pot estar buit';
+        // Comprovem si el camp cos esta buit
+        } else if (empty($cos)) {
+            $_SESSION['message'] = 'El cos no pot estar buit';
+        // Si tot esta correcte, cridem a insertLlibre per fer l'insert
+        } else {
+            insertLlibre($isbn, $titol, $cos, $correu);
+            $_SESSION['message'] = 'Llibre insertat correctament';
+        }
     }
 }
 ?>
