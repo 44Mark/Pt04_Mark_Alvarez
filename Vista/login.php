@@ -10,7 +10,7 @@
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
             <div class="contenedor-input">
                 <label>Correu electrònic</label>
-                <input type="email" name="correu" required>
+                <input type="email" name="correu" value="<?php echo isset($_POST['correu']) ? htmlspecialchars($_POST['correu']) : ''; ?>" required>
             </div>
 
             <div class="contenedor-input">

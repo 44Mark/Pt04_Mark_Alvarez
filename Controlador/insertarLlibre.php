@@ -20,7 +20,7 @@ function comprovacioInsertarLlibre($isbn, $titol, $cos, $correu) {
             return;
         // Comprovem si el camp isbn comença amb 978 o 979
         } else if (!preg_match('/^(978|979)/', $isbn)) {
-            $_SESSION['message'] = 'El isbn ha de començar amb 978 o 979';
+            $_SESSION['message'] = 'El isbn ha de començar amb 978 o 979. Exemple "978-8413143194"';
             return;
         // Comprovem si el camp titol esta buit
         } else if (empty($titol)) {
@@ -34,8 +34,9 @@ function comprovacioInsertarLlibre($isbn, $titol, $cos, $correu) {
         } else {
             insertLlibre($isbn, $titol, $cos, $correu);
             $_SESSION['message'] = 'Llibre insertat correctament';
-            return;
+            header('Location: ../index.php');
+            exit();
+    }
         }
     }
-}
 ?>

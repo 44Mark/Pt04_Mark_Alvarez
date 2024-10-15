@@ -8,6 +8,10 @@ function signup($nom, $correu, $contrasenya, $confirmacio_contrasenya) {
     if (empty($nom) || empty($correu) || empty($contrasenya) || empty($confirmacio_contrasenya)) {
         $_SESSION['message'] = "Els camps no poden estar buits.";
         return;
+    // Comprovem que la contrasenya tingui minim 8 caracters amb majuscules, minuscules, numeros i simbols
+    } else if (!preg_match('/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/', $contrasenya)) {
+        $_SESSION['message'] = "La contrasenya ha de tenir entre 8 i 16 caracters, una majuscula, una minuscula, un numero i un simbol.";
+        return;
     // Comprovem si les contrasenyes son iguals
     } else if ($contrasenya !== $confirmacio_contrasenya) {
         $_SESSION['message'] = "Els camps contrasenya no son igual.";

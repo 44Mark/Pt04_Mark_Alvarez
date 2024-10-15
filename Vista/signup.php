@@ -8,14 +8,14 @@
     <div id="iniciar-sesion">
         <h1>Registrar-se</h1>
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-            <div class="contenedor-input">
+        <div class="contenedor-input">
                 <label>Nom</label>
-                <input type="text" name="nombre" required>
+                <input type="text" name="nombre" value="<?php echo isset($_POST['nombre']) ? htmlspecialchars($_POST['nombre']) : ''; ?>" required>
             </div>
 
             <div class="contenedor-input">
                 <label>Correu electrònic</label>
-                <input type="email" name="correo" required>
+                <input type="email" name="correo" value="<?php echo isset($_POST['correo']) ? htmlspecialchars($_POST['correo']) : ''; ?>" required>
             </div>
 
             <div class="contenedor-input">

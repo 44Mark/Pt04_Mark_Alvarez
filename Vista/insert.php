@@ -17,17 +17,17 @@ include('./header.php');
 
             <div class="contenedor-input">
                 <label for="isbn">ISBN:</label>
-                <input type="text" id="isbn" name="isbn" value="<?php if (isset($isbn)) echo $isbn; ?>">
+                <input type="text" id="isbn" name="isbn" value="<?php echo isset($_POST['isbn']) ? htmlspecialchars($_POST['isbn']) : ''; ?>">
             </div>
 
             <div class="contenedor-input">
                 <label for="titol">Titol:</label>
-                <input type="text" id="titol" name="titol" value="<?php if (isset($titol)) echo $titol; ?>">
+                <input type="text" id="titol" name="titol" value="<?php echo isset($_POST['titol']) ? htmlspecialchars($_POST['titol']) : ''; ?>">
             </div>
 
             <div class="contenedor-input">
                 <label for="cos">Cos:</label>
-                <textarea name="cos" rows="8" cols="38"><?php if (isset($cos)) echo $cos; ?></textarea>
+                <textarea name="cos" rows="8" cols="38"><?php echo isset($_POST['cos']) ? htmlspecialchars($_POST['cos']) : ''; ?></textarea>
             </div>
 
             <input type="submit" value="Enviar" class="button">

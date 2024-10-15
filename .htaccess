@@ -20,3 +20,6 @@ RewriteRule ^insert$ /BackEnd/Pt04_Mark_Alvarez/Vista/insert.php [L]
 
 # Reescribe /insert a /Vista/modificar.php
 RewriteRule ^modificar$ /BackEnd/Pt04_Mark_Alvarez/Vista/modificar.php [L]
+
+RewriteCond %{REQUEST_URI} !^/BackEnd/Pt04_Mark_Alvarez/(index|Vista/|Controlador/)
+RewriteRule ^.*$ /BackEnd/Pt04_Mark_Alvarez/index.php [L]

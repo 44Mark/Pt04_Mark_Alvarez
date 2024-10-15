@@ -34,7 +34,7 @@ include('./header.php');
         <button class="button" onclick="window.location.href='./index.php';">Tornar al menú</button>
 
         <?php
-        // Si s'ha enviat el formulari, cridem a la funció actualitzarLlibre
+        // Si s'ha enviat el formulari, cridem a la funció comprovactualitzarLlibre
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             include('../Controlador/modificarLlibre.php');
             $missatge = comprovactualitzarLlibre($_POST['isbn'], $_POST['titol'], $_POST['cos'], $_SESSION['correu']);
