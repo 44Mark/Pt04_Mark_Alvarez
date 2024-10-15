@@ -32,7 +32,7 @@ include_once('./Vista/header.php');
 
         <h2>Aquests son tots els llibres</h2> 
     <?php endif; ?>
-    <div class="container">
+    <div>
         <table class="tablaUsuarios">
             <thead>
                 <tr>
@@ -54,7 +54,7 @@ include_once('./Vista/header.php');
                         <td><?php echo htmlspecialchars($art['cos']); ?></td>
                         <?php if ($_SESSION['usuari_autenticat']): ?>
                             <?php // Si l'usuari esta autenticat, sortiran els botons per modificar i eliminar els articles ?>
-                            <td><a href="" class="botonindex">Modificar</a></td>
+                            <td><a href="controlador/comprovmodificarLlibre.php?isbn=<?php echo $art['isbn']; ?>" class="botonindex">Modificar</a></td>
                             <td><a href="controlador/eliminarllibre.php?isbn=<?php echo $art['isbn']; ?>" class="botonindex" onclick="return confirm('Estàs segur que vols eliminar aquest llibre?');">Eliminar</a></td>
                         <?php endif; ?>
                     </tr>

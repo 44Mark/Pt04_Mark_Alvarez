@@ -13,6 +13,7 @@ function correuExisteix($correu) {
     $stmt->execute();
     
     return $stmt->fetchColumn() > 0;
+    var_dump($stmt->fetchColumn());
 }
 
 // Funció per obtenir el correu de l'usuari

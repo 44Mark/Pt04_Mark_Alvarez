@@ -8,10 +8,10 @@ session_start();
 include('./header.php'); 
 ?>
 
-</head>
+</head> 
 <body>
-    <h1>Creació d'articles</h1>
-    <div class="container">
+    <h1>Inserció de Llibres</h1>
+    <div id="iniciar-sessio">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="insert">  
             <input type="hidden" name="accion" value="insertarLlibre">
 
@@ -27,7 +27,7 @@ include('./header.php');
 
             <div class="contenedor-input">
                 <label for="cos">Cos:</label>
-                <textarea name="cos" rows="8" cols="92.5"><?php if (isset($cos)) echo $cos; ?></textarea>
+                <textarea name="cos" rows="8" cols="38"><?php if (isset($cos)) echo $cos; ?></textarea>
             </div>
 
             <input type="submit" value="Enviar" class="button">

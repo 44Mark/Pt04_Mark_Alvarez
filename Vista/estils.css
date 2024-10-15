@@ -92,22 +92,14 @@ h2{
 }
 
 /* Estilos para el formulario de inicio de sesión */
-#iniciar-sesion {
-    background: #ffffff;
+#iniciar-sessio, #iniciar-sesion {
+    width: 300px; /* Ajusta el ancho */
+    margin: 50px auto; /* Espacio desde arriba y centrado horizontalmente */
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-    margin: 50px auto; /* Centra el formulario horizontalmente */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    border-radius: 5px;
 }
-
-#iniciar-sesion h1 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-}
-
 .contenedor-input {
     margin-bottom: 15px;
     text-align: left;
@@ -133,62 +125,39 @@ h2{
     outline: none;
 }
 
-.forgot {
-    margin: 15px 0;
-    text-align: right;
-}
-
-.forgot a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.forgot a:hover {
-    text-decoration: underline;
-}
 
 .button {
     background-color: #007bff;
     color: white;
-    padding: 10px 15px;
+    padding: 8px 13px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
     font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .button:hover {
     background-color: #0056b3;
 }
 
-/* Estilos para la tabla de gestión de artículos */
-.container {
-    margin: 50px auto;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-}
-
 .tablaUsuarios {
-    width: 100%;
+    width: 60%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 20px auto;
 }
 
 .tablaUsuarios th, .tablaUsuarios td {
     border: 1px solid #ddd;
     padding: 8px;
+    width: auto; 
 }
 
 .tablaUsuarios th {
     background-color: #f2f2f2;
     color: #333;
     text-align: center;
-}
-
-.tablaUsuarios tr:nth-child(even) {
-    background-color: #f9f9f9;
 }
 
 .tablaUsuarios tr:hover {
@@ -219,12 +188,3 @@ h2{
     border-radius: 10px;
 }
 
-.botonme {
-    background-color: #cc5a4a;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 4px;
-    display: inline-block;
-    width: 40%;
-}

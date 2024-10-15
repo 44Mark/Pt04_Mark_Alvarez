@@ -43,4 +43,41 @@ function eliminarLlibre($isbn) {
     $stmt->bindParam(':isbn', $isbn);
     $stmt->execute();
 }
+
+// Funció per comprovar si ja hi ha un llibre amb aquest isbn
+function comprovarLlibre($isbn) {
+    global $connexio;
+
+    // Comprovar si ja existeix un llibre amb aquest isbn
+    $stmt = $connexio->prepare("SELECT * FROM taula_articles WHERE isbn = :isbn");
+    $stmt->bindParam(':isbn', $isbn);
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// Funció per obtenir un llibre per l'isbn
+function obtenirLlibre($isbn) {
+    global $connexio;
+
+    // Obtenir el llibre per l'isbn
+    $stmt = $connexio->prepare("SELECT * FROM taula_articles WHERE isbn = :isbn");
+    $stmt->bindParam(':isbn', $isbn);
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// Funció per actualitzar un llibre
+function actualitzarLlibre($isbn, $titol, $cos) {
+    global $connexio;
+
+    // Actualitzar el llibre
+    $stmt = $connexio->prepare("UPDATE taula_articles SET titol = :titol, cos = :cos WHERE isbn = :isbn");
+    $stmt->bindParam(':isbn', $isbn);
+    $stmt->bindParam(':titol', $titol);
+    $stmt->bindParam(':cos', $cos);
+    $stmt->execute();
+}
+
 ?>

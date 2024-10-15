@@ -9,11 +9,14 @@ RewriteRule ^login$ /BackEnd/Pt04_Mark_Alvarez/Vista/login.php [L]
 # Reescribe /signup a /Vista/signup.php
 RewriteRule ^signup$ /BackEnd/Pt04_Mark_Alvarez/Vista/signup.php [L]
 
-# Reescribe /gestio a /Vista/signup.php
+# Reescribe /gestio a /Vista/gestio.php
 RewriteRule ^gestio$ /BackEnd/Pt04_Mark_Alvarez/Vista/gestio.php [L]
 
-# Reescribe /logout a /Vista/signup.php
-RewriteRule ^logout$ /BackEnd/Pt04_Mark_Alvarez/Vista/logout.php [L]
+# Reescribe /logout a /Controlador/logout.php
+RewriteRule ^logout$ /BackEnd/Pt04_Mark_Alvarez/Controlador/logout.php [L]
 
-# Reescribe /logout a /Vista/signup.php
+# Reescribe /insert a /Vista/insert.php
 RewriteRule ^insert$ /BackEnd/Pt04_Mark_Alvarez/Vista/insert.php [L]
+
+# Reescribe /insert a /Vista/modificar.php
+RewriteRule ^modificar$ /BackEnd/Pt04_Mark_Alvarez/Vista/modificar.php [L]
