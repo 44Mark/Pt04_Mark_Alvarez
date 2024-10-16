@@ -1,5 +1,7 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 0; /* Eliminar márgenes para evitar desplazamiento */
+    padding-top: 60px; /* Espacio para la barra de navegación */
 }
 
 /* Estils de la barra de navegació */ 
@@ -9,6 +11,23 @@ body {
     align-items: center; 
     background-color: #aa3a22;
     padding: 7px;
+    width: 100%;
+    z-index: 1000; /* Asegurar que esté por encima de otros elementos */
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+}
+
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-center {
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
 }
 
 .navbar a {
@@ -21,45 +40,22 @@ body {
     background-color: #cc4b33;
 }
 
-/* Valors per la barra de navegació superior */
-.navbar.superior {
-    border-bottom: 1px solid #aa3a22;
-    display: flex;
-    justify-content: center; 
+.fixed-title {
     font-size: 30px;
     font-weight: bold;
-    padding: 10px;
     color: #f2f2f2;
-}
-
-/* Valors per la barra de navegació inferior */
-.navbar.inferior {
-    border-top: 1px solid #aa3a22;
-    margin-top: -1px;
-    padding: 5px 10px;
-}
-
-/* Eslogan de la pàgina */
-h1{
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    color: #d64c2d;
-    padding: 14px 16px;
-}
-
-h2{
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-    color: #cc4b33;
-
+    position: fixed;
+    top: 13px; /* Ajusta según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap; 
 }
 
 /* Estils del menú desplegable */
 .dropdown {
     position: relative;
     display: inline-block;
+    margin-right: 20px; 
 }
 
 .dropdown img:hover {
@@ -91,15 +87,31 @@ h2{
     display: block;
 }
 
+/* Otros estilos */
+h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #d64c2d;
+    padding: 14px 16px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #cc4b33;
+}
+
 /* Estilos para el formulario de inicio de sesión */
 #iniciar-sessio, #iniciar-sesion {
-    width: 300px; /* Ajusta el ancho */
-    margin: 50px auto; /* Espacio desde arriba y centrado horizontalmente */
+    width: 300px; 
+    margin: 80px auto; 
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    border-radius: 5px;
 }
+
 .contenedor-input {
     margin-bottom: 15px;
     text-align: left;
@@ -124,7 +136,6 @@ h2{
     border-color: #66afe9;
     outline: none;
 }
-
 
 .button {
     background-color: #007bff;

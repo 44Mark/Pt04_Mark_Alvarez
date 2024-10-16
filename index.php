@@ -1,14 +1,17 @@
 <?php
-require_once('Model/connexio.php'); 
-include('Model/llibres.php');
-include('Model/usuari.php');
-include('Controlador/paginacio.php'); // Incluir paginacio.php antes de usar las variables de paginación
+require_once('./Model/connexio.php'); 
+include('./Model/llibres.php');
+include('./Model/usuari.php');
+include('./Controlador/controlPaginacio.php');
+include('./Controlador/timeout.php');
 
 // Si la session correu esta definida, significa que l'usuari esta autenticat
 if (isset($_SESSION['correu'])) {
     $_SESSION['usuari_autenticat'] = true;
+    $articles = obtenirArticlesUsuari($_SESSION['correu']);
 } else {
     $_SESSION['usuari_autenticat'] = false;
+    $articles = obtenirArticles();
 }
 
 // Navbar
@@ -50,41 +53,14 @@ include_once('./Vista/header.php');
                         <td><?php echo htmlspecialchars($art['cos']); ?></td>
                         <?php if ($_SESSION['usuari_autenticat']): ?>
                             <?php // Si l'usuari esta autenticat, sortiran els botons per modificar i eliminar els articles ?>
-                            <td><a href="controlador/comprovmodificarLlibre.php?isbn=<?php echo $art['isbn']; ?>" class="botonindex">Modificar</a></td>
-                            <td><a href="controlador/eliminarllibre.php?isbn=<?php echo $art['isbn']; ?>" class="botonindex" onclick="return confirm('Estàs segur que vols eliminar aquest llibre?');">Eliminar</a></td>
+                            <td><a href="Controlador/comprovmodificarLlibre.php?isbn=<?php echo $art['isbn']; ?>" class="botonindex">Modificar</a></td>
+                            <td><a href="Controlador/eliminarllibre.php?isbn=<?php echo $art['isbn']; ?>" class="botonindex" onclick="return confirm('Estàs segur que vols eliminar aquest llibre?');">Eliminar</a></td>
                         <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-        
-        <?php // Sección de paginación ?>
-        <section class="paginacio">
-            <ul>
-                <!-- Botón "Anterior" -->
-                <li class="<?php echo ($page <= 1) ? 'disabled' : ''; ?>">
-                    <a href="?page=<?php echo max(1, $page - 1); ?>">&laquo;</a>
-                </li>
-
-                <!-- Botones de página -->
-                <?php if ($totalPages > 0): ?>
-                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                        <li class="<?php echo ($i == $page) ? 'active' : ''; ?>">
-                            <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                        </li>
-                    <?php endfor; ?>
-                <?php else: ?>
-                    <li class="active">
-                        <a href="?page=1">1</a>
-                    </li>
-                <?php endif; ?>
-
-                <!-- Botón "Siguiente" -->
-                <li class="<?php echo ($page >= $totalPages) ? 'disabled' : ''; ?>">
-                    <a href="?page=<?php echo min($totalPages, $page + 1); ?>">&raquo;</a>
-                </li>
-            </ul>
-        </section>
+        <?php include_once('./Vista/paginacio.php'); ?>
 
         <?php // Si hi ha un missatge, el mostrem ?>
         <?php if (isset($_SESSION['message'])) {

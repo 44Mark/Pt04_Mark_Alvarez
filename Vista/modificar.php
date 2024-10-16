@@ -1,3 +1,7 @@
+<?php
+include('./Controlador/timeout.php');
+?>
+
 <!-- Mark Alvarez -->
 <!DOCTYPE html>
 <html lang="es">

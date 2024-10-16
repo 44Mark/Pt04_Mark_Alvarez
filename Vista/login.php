@@ -10,22 +10,23 @@
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
             <div class="contenedor-input">
                 <label>Correu electrònic</label>
-                <input type="email" name="correu" value="<?php echo isset($_POST['correu']) ? htmlspecialchars($_POST['correu']) : ''; ?>" required>
+                <input type="email" name="correu" value="<?php echo isset($_COOKIE['correu']) ? htmlspecialchars($_COOKIE['correu']) : ''; ?>" required>
             </div>
 
             <div class="contenedor-input">
                 <label>Contrasenya</label>
-                <input type="password" name="contrasenya" required>
+                <input type="password" name="contrasenya" value="<?php echo isset($_COOKIE['contrasenya']) ? htmlspecialchars($_COOKIE['contrasenya']) : ''; ?>" required>
             </div>
             
-            <input type="checkbox" name="recordar" value="recordar">Recordar-me<br>
+            <input type="checkbox" name="recordar" value="1" <?php echo isset($_COOKIE['correu']) ? 'checked' : ''; ?>>Recordar-me<br>
             <input type="submit" class="button button-block" value="Iniciar Sessió">
         </form>
         <?php
             // Si s'ha enviat el formulari, cridem a la funció login
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 include '../Controlador/verificarUsuari.php';
-                login($_POST['correu'], $_POST['contrasenya']);
+                $recordar = isset($_POST['recordar']) ? true : false;
+                login($_POST['correu'], $_POST['contrasenya'], $recordar);
             }
             // Si hi ha un missatge, el mostrem
             if (isset($_SESSION['message'])) {

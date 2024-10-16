@@ -3,8 +3,13 @@ require('../Model/llibres.php');
 
 // Comprovem que els camps no estiguin buits i cridem a la funció insertLlibre
 function comprovacioInsertarLlibre($isbn, $titol, $cos, $correu) {
+    //Si la variable correo esta buit, redirigim a la pagina de login
+    if (empty($correu)) {
+        $_SESSION['message'] = 'Has d\'iniciar sessió per poder insertar un llibre';
+        header('Location: ../index.php');
+        exit();
     // Comprovem si el camp isbn esta buit
-    if (empty($isbn)) {
+     }else if (empty($isbn)) {
         $_SESSION['message'] = 'El isbn no pot estar buit';
         return;
     // Comprovem si ja existeix un llibre amb aquest isbn
