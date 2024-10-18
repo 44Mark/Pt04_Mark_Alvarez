@@ -1,17 +1,20 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once('./Model/connexio.php'); 
 include('./Model/llibres.php');
 include('./Model/usuari.php');
+unset($_SESSION['tot']); 
 include('./Controlador/controlPaginacio.php');
 include('./Controlador/timeout.php');
+
 
 // Si la session correu esta definida, significa que l'usuari esta autenticat
 if (isset($_SESSION['correu'])) {
     $_SESSION['usuari_autenticat'] = true;
-    $articles = obtenirArticlesUsuari($_SESSION['correu']);
 } else {
     $_SESSION['usuari_autenticat'] = false;
-    $articles = obtenirArticles();
 }
 
 // Navbar
@@ -55,7 +58,8 @@ include_once('./Vista/header.php');
                             <?php // Si l'usuari esta autenticat, sortiran els botons per modificar i eliminar els articles ?>
                             <td><a href="Controlador/comprovmodificarLlibre.php?isbn=<?php echo $art['isbn']; ?>" class="botonindex">Modificar</a></td>
                             <td><a href="Controlador/eliminarllibre.php?isbn=<?php echo $art['isbn']; ?>" class="botonindex" onclick="return confirm('Estàs segur que vols eliminar aquest llibre?');">Eliminar</a></td>
-                        <?php endif; ?>
+                            
+                            <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

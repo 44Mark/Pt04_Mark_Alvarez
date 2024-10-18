@@ -1,11 +1,13 @@
 <?php
 
-// Configurar la duración de la sesión a 10 segundos para pruebas
+// Durada de 40 minuts
 $inactiu = 40 * 60;
 
-// Verificar si la sesión está activa
+// Verifiquem si la sessió ha estat creada
 if (isset($_SESSION['timeout'])) {
+    // Calcula el temps transcorregut des de l'última activitat
     $temps = time() - $_SESSION['timeout'];
+    // Si el temps transcorregut és major que el temps d'inactivitat(40 minuts), es tanca la sessió
     if ($temps > $inactiu) {
         session_unset();
         header("Location: index.php");

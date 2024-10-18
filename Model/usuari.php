@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 include(__DIR__ . '/../Model/connexio.php');
 
@@ -42,15 +41,15 @@ function afegirUsuari($nom, $correu, $contrasenya_hashed) {
     $stmt->execute();
 }
 
-// Funció per iniciar sessió i comprovar que existeix l'usuari a la base de dades
-function iniciarSessio($correu, $contrasenya) {
-    global $connexio;
+// // Funció per iniciar sessió i comprovar que existeix l'usuari a la base de dades
+// function iniciarSessio($correu, $contrasenya) {
+//     global $connexio;
     
-    $sql = "SELECT nom, contrasenya FROM usuaris WHERE correu = :correu";
-    $stmt = $connexio->prepare($sql);
-    $stmt->bindParam(':correu', $correu);
-    $stmt->execute();
+//     $sql = "SELECT nom, contrasenya FROM usuaris WHERE correu = :correu";
+//     $stmt = $connexio->prepare($sql);
+//     $stmt->bindParam(':correu', $correu);
+//     $stmt->execute();
     
-    $usuari = $stmt->fetch(PDO::FETCH_ASSOC);
-}
+//     return $stmt->fetch(PDO::FETCH_ASSOC);
+// }
 ?>

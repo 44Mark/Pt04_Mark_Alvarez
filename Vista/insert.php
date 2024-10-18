@@ -3,7 +3,9 @@
 <html lang="es">
 <head>
 <?php
-session_start(); 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 include('./header.php'); 
 ?>
@@ -48,7 +50,5 @@ include('./header.php');
         }
     ?>
     </div>
-
-    
 </body>
 </html>

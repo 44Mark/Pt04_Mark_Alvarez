@@ -55,15 +55,14 @@ function login($correu, $contrasenya, $recordar) {
     }
 
     if ($recordar) {
-        setcookie('correu', $correu, time() + (86400 * 30), "/"); // 86400 = 1 dia
+        setcookie('correu', $correu, time() + (86400 * 30), "/");
         setcookie('contrasenya', $contrasenya, time() + (86400 * 30), "/");
     }
+    
 
-    // Si tot esta correcte, cridem a iniciarSessio per fer el select
-    iniciarSessio($correu, $contrasenya);
     $_SESSION['message'] = "Sessió iniciada correctament.";
     // Guardem el correu i el nom de l'usuari a la session per poder modificar els botons  de index.php(benvinguda) i header.php(navbar)
-    $_SESSION['correu'] = $correu;
+    $_SESSION['correu'] = $usuari['correu'];
     $_SESSION['nom'] = $usuari['nom'];
     $_SESSION['timeout'] = time();
 

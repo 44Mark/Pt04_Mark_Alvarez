@@ -1,3 +1,4 @@
+<!-- Mark Alvarez -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,6 +23,7 @@
             <input type="submit" class="button button-block" value="Iniciar Sessió">
         </form>
         <?php
+        
             // Si s'ha enviat el formulari, cridem a la funció login
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 include '../Controlador/verificarUsuari.php';
